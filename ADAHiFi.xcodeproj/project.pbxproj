@@ -16,6 +16,7 @@
 		4CD2284E2ACB51B900CF7D59 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2284D2ACB51B900CF7D59 /* Home.swift */; };
 		4CD228502ACB5BE000CF7D59 /* CardRectKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2284F2ACB5BE000CF7D59 /* CardRectKey.swift */; };
 		4CD228542ACDFD1100CF7D59 /* OlgaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD228532ACDFD1100CF7D59 /* OlgaCard.swift */; };
+		4CD228562ACF530600CF7D59 /* CardCreatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD228552ACF530600CF7D59 /* CardCreatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		4CD2284D2ACB51B900CF7D59 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		4CD2284F2ACB5BE000CF7D59 /* CardRectKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRectKey.swift; sourceTree = "<group>"; };
 		4CD228532ACDFD1100CF7D59 /* OlgaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OlgaCard.swift; sourceTree = "<group>"; };
+		4CD228552ACF530600CF7D59 /* CardCreatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCreatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				4CD2284D2ACB51B900CF7D59 /* Home.swift */,
+				4CD228552ACF530600CF7D59 /* CardCreatorView.swift */,
 				4CD228532ACDFD1100CF7D59 /* OlgaCard.swift */,
 			);
 			path = Views;
@@ -273,6 +276,7 @@
 			files = (
 				4CA677B42ABA41A000C3E1CD /* ContentView.swift in Sources */,
 				4CD2284C2ACB449000CF7D59 /* Card.swift in Sources */,
+				4CD228562ACF530600CF7D59 /* CardCreatorView.swift in Sources */,
 				4CD2284E2ACB51B900CF7D59 /* Home.swift in Sources */,
 				4CD228502ACB5BE000CF7D59 /* CardRectKey.swift in Sources */,
 				4CA677B22ABA41A000C3E1CD /* ADAHiFiApp.swift in Sources */,

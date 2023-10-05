@@ -8,34 +8,50 @@
 import SwiftUI
 
 struct Home: View {
+   @State var cards: [Card] = [
+        .init(cardColor: Color("Card 1"), name: "Dezmond Blair (He/Him)", cardDesc: "Hi my name is Dez. I like mtb and mango", cardCon: "dez@blair.com", cardNote: "Write notes about me here", proPic: Image("Pic 1"), cardPic: Image("CP2")),
+        .init(cardColor: Color("Card 2"), name: "Leroy Whitt (Him/Him)", cardDesc: "Hi my name is Leroy. I like food and fun in the sun", cardCon: "leroy@whitt.com", cardNote: "Write notes about me here", proPic: Image("Pic 2"),cardPic: Image("CP3") ),
+        .init(cardColor: Color("Card 3"), name: "Olga Kapustina (She/Her)", cardDesc: "Hi my name is Olga. I like travel and dogs", cardCon: "olga@kap.com", cardNote: "Write notes about me here", proPic: Image("Pic 4"), cardPic: Image("CP1")),
+        .init(cardColor: Color("Card 4"), name: "Mohammad Wasi", cardDesc: "Hi my name is Wasi. I like sports and sleep", cardCon: "mohammad@wasi.com", cardNote: "Write notes about me here", proPic: Image("CP4"), cardPic: Image("Pic 3")),
+    ]
     var size: CGSize
     @State private var expandCards = false
-    //    @State var activeSheet: activeSheet?
+    @State var activeSheet = false
     @State private var showDetailView = false
     @State private var selectedCard: Card?
     @Namespace private var animation
     @State private var showDetailContent = false
     
-        var body: some View {
+    var body: some View {
         VStack(spacing: 0){
             HStack{
-//                Text("ADA")
-//                    .font(.largeTitle)
+                //                Text("ADA")
+                //                    .font(.largeTitle)
                 Spacer()
                 Button{
-                    
                 }label: {
                     Image(systemName:"magnifyingglass")
                         .font(.title)
                         .foregroundColor(.purple)
-                    
                 }
-            } 
+                Button{
+//                    let card = Card(cardColor: .pink, name: "Test", cardDesc: "Test", cardCon: "Test", cardNote: "test", proPic: Image("Pic 1"), cardPic: Image("CP1"))
+//                    cards.append(card)
+                    activeSheet.toggle()
+                    
+                }label: {
+                    Image(systemName: "plus")
+                }
+            }
+            
             .padding()
             CardsView()
                 .padding(.horizontal, 5)
             
         }
+        .sheet(isPresented: $activeSheet, content: {
+            CardCreatorView(cards: $cards)
+        })
         .overlay(content: {
             if let selectedCard, showDetailView {
                 DetailView(selectedCard)
@@ -46,7 +62,7 @@ struct Home: View {
             if let cardPreference = preferences["CardRect"]{
                 GeometryReader { proxy in
                     let cardRect = proxy[cardPreference]
-        
+                    
                     CardContent()
                         .frame(width: cardRect.width, height: expandCards ? nil : cardRect.height)
                         .offset(x: cardRect.minX, y: cardRect.minY)
@@ -91,7 +107,7 @@ struct Home: View {
         
         
         
-         
+        
     }
     @ViewBuilder func DetailView(_ card: Card) -> some View {
         VStack(spacing: 0){
@@ -111,7 +127,7 @@ struct Home: View {
                     
                 }
                 Spacer()
-               
+                
             }
             .foregroundColor(.black)
             .padding(15)
@@ -121,20 +137,17 @@ struct Home: View {
                 .matchedGeometryEffect(id: card.id, in: animation)
                 .frame(height: 500)
                 .padding([.top], 15)
-           
-            }
+            
+        }
         .frame(maxHeight: .infinity, alignment: .top)
-                   .background{
-                       Rectangle()
-                           .fill(.clear)
-                           .ignoresSafeArea()
-                           .opacity(showDetailContent ? 1 : 0)
-
+        .background{
+            Rectangle()
+                .fill(.clear)
+                .ignoresSafeArea()
+                .opacity(showDetailContent ? 1 : 0)
+            
         }
     }
-    
-    
-    
     
     
     @ViewBuilder
@@ -157,7 +170,7 @@ struct Home: View {
                             //3D Roto
                                 .rotation3DEffect(.init(degrees: expandCards ? (showDetailView ? 0 : -15) : 0), axis: (x: 0, y: 0, z: 0), anchor: .top)
                                 .matchedGeometryEffect(id: card.id, in: animation)
-                                .offset(y: showDetailView ? (size.height * 5) : 0)
+                                .offset(y: showDetailView ? (size.height * 3) : 0)
                                 .onTapGesture {
                                     if expandCards {
                                         //Expand Selected Card
@@ -189,10 +202,10 @@ struct Home: View {
                 }
             }
             .padding(.top, 45)
-            .padding(.bottom, CGFloat(cards.count - 1) * -200)
+            .padding(.bottom, CGFloat(cards.count - 1) * -400)
             
         }
-//              .scrollDisabled(!expandCards)
+        //              .scrollDisabled(!expandCards)
     }
     
     func indexOf(_ card: Card) -> Int {
@@ -272,16 +285,16 @@ struct Home: View {
                             HStack {
                                 TextField("Write Notes about me here!", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
                                     .padding()
-//                                Button{
-//                                    
-//                                }label: {
-//                                    Image(systemName: "note.text")
-//                                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-//                                        .foregroundColor(.black)
-//                                }
+                                //                                Button{
+                                //
+                                //                                }label: {
+                                //                                    Image(systemName: "note.text")
+                                //                                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                                //                                        .foregroundColor(.black)
+                                //                                }
                                 
-//                                Text(card.cardNote)
-//                                    .padding()
+                                //                                Text(card.cardNote)
+                                //                                    .padding()
                                 Spacer()
                                 
                             }.padding(.leading)

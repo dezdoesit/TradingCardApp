@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+
+
+
 struct OlgaCard: View {
     var body: some View {
         VStack(spacing: 0) {
